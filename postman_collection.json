@@ -1,0 +1,71 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Todo-API",
+		"_postman_id": "a15d4925-448b-4134-caca-6f75c29a1ff9",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "List",
+			"request": {
+				"url": "http://localhost:5555/",
+				"method": "GET",
+				"header": [
+					{
+						"key": "secret",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiT3dsZXQzLlRhc2tNYW5hZ2VtZW50OkFwaUFjY2Vzc1Rhc2sifQ.W7YEjC4HBNaHkncQwYs-ZWQ8xu4PkkAJkIF_7wFP0dI",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"taskName\": \"registration\",\n\t\"headers\": [],\n\t\"payload\": {\n        \"IP\": \"1.2.3.5:4096\",\n        \"Time\": \"2017-03-28T18:31:13.817Z\",\n        \"Type\": \"registration\",\n        \"Header\": {\n            \"Content-Format\": \"application\\/json\",\n            \"Content-Type\": \"application\\/json\"\n        },\n        \"Payload\": {\n            \"Info\": {\n                \"UTC\": \"170328183059\",\n                \"Queue\": [\n                    {\n                        \"Registration\": [\n                            \"0000000000000013\",\n                            \"3A-2213-2100-A238-aaab\",\n                            1701000641,\n                            \"3.12.10.44\",\n                            \"1BE3F76EB545D7E700000000B8406AAE00000000000000000000000000000000\",\n                            \"0000000000000004\",\n                            \"170328183059\"\n                        ]\n                    },\n                    {\n                        \"PositionUpdate\": [\n                            \"170328183059\",\n                            7.635033,\n                            51.956542,\n                            320\n                        ]\n                    }\n                ],\n                \"DeviceID\": \"0000000000000013\"\n            }\n        }\n    }\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create",
+			"request": {
+				"url": "http://localhost:5555/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "secret",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiT3dsZXQzLlRhc2tNYW5hZ2VtZW50OkFwaUFjY2Vzc1Rhc2sifQ.W7YEjC4HBNaHkncQwYs-ZWQ8xu4PkkAJkIF_7wFP0dI",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"message\": \"Milch kaufen\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
