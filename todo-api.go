@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	todoApp := &todo.Controller{}
+	todoApp := todo.NewController()
 
 	r := mux.NewRouter()
 	r.HandleFunc("/", todoApp.List).Methods("GET")

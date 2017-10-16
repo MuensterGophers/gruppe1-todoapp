@@ -1,0 +1,6 @@
+pgsql:
+  image: postgres:10-alpine
+  environment:
+    POSTGRES_PASSWORD: 'foo123'
+  ports:
+    - 5432:5432
