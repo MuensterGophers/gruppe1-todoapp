@@ -3,7 +3,7 @@ package main
 import (
 	"net/http"
 	"github.com/gorilla/mux"
-	"todo-api/todo"
+	"github.com/MuensterGophers/gruppe1-todoapp/todo"
 )
 
 func main() {

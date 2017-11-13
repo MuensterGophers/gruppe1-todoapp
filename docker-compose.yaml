@@ -1,6 +1,9 @@
 pgsql:
   image: postgres:10-alpine
-  environment:
-    POSTGRES_PASSWORD: 'foo123'
   ports:
     - 5432:5432
+  environment:
+    POSTGRES_PASSWORD: 'foo123'
+    POSTGRES_DB: 'todo_db'
+  volumes:
+    - ./todo_db-schema.sql:/docker-entrypoint-initdb.d/todo_db-schema.sql

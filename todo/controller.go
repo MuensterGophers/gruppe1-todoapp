@@ -19,7 +19,7 @@ type Controller struct {
 }
 
 func NewController() *Controller {
-	db, err := sql.Open("postgres", "postgres://postgres:foo123@10.0.1.13:5432/todo?sslmode=disable")
+	db, err := sql.Open("postgres", "postgres://postgres:foo123@localhost:5432/todo_db?sslmode=disable")
 	if err != nil {
 		log.Println(err)
 	}
@@ -31,29 +31,34 @@ func NewController() *Controller {
 	return ret
 }
 
-/**
- * Warum c *Controller?
- */
+// Pagination einbauen? (zum Demonstrieren von slices)
 func (c *Controller) List(w http.ResponseWriter, r *http.Request) {
-	// error nicht ignorieren
 	rows, err := c.db.Query("SELECT id, message FROM todo")
 
-	fmt.Println(err)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
 
 	defer rows.Close()
 
-	// Todo: Über alle Ergebnisse iterieren
-	rows.Next()
+	ret := make([]Model, 0, 10);
 
-	var id int
-	var message string
+	for rows.Next() {
+		model := Model{}
 
-	rows.Scan(&id, &message)
+		err = rows.Scan(&model.Id, &model.Message)
 
-	//c.repo.get
-	model := Model{Id: id, Message: message}
+		if err != nil {
+			fmt.Println(err)
+			continue
+		}
+
+		ret = append(ret, model)
+	}
+
 	//warum pointer? wegen interface?
-	response, _ := json.Marshal(&model)
+	response, _ := json.Marshal(&ret)
 	w.Header().Add("Content-Type", "application/json")
 	w.Write(response)
 }
